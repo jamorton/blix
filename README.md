@@ -11,8 +11,7 @@ preferred to an exact port.
 
 ## What does it look like?
 
-```
-
+```C++
 #include "Stage.h"
 #include "Sprite.h"
 #include "Bitmap.h"
@@ -60,5 +59,4 @@ Stage * createStage()
 {
     return new Game;
 }
-
 ```
