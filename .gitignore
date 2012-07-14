@@ -1,0 +1,15 @@
+.DS_Store
+*/android/bin
+*/android/build.xml
+*/android/default.properties
+*/android/local.properties
+*/android/obj/
+*/android/libs/
+*/android/proguard-project.txt
+*.a
+engine/build
+deps/*/build
+project.xcworkspace/
+xcuserdata/
+.\#.*
+\#*\#

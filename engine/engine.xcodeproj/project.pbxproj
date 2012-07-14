@@ -1,0 +1,310 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7F94A9AD15B138250095AB5B /* Bitmap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7F962DC815AE658900E1D012 /* Bitmap.cpp */; };
+		7F94A9AE15B138250095AB5B /* BitmapData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7F962DCA15AE658900E1D012 /* BitmapData.cpp */; };
+		7F94A9AF15B138250095AB5B /* DisplayObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7F962DCF15AE658900E1D012 /* DisplayObject.cpp */; };
+		7F94A9B015B138250095AB5B /* DisplayObjectContainer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7F962DD115AE658900E1D012 /* DisplayObjectContainer.cpp */; };
+		7F94A9B115B138250095AB5B /* Engine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7F962DD315AE658900E1D012 /* Engine.cpp */; };
+		7F94A9B215B138250095AB5B /* EventDispatcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7F962DD615AE658900E1D012 /* EventDispatcher.cpp */; };
+		7F94A9B315B138250095AB5B /* Graphics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7F962DD815AE658900E1D012 /* Graphics.cpp */; };
+		7F94A9B415B138250095AB5B /* PlatformAndroid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7F962DDC15AE658900E1D012 /* PlatformAndroid.cpp */; };
+		7F94A9B515B138250095AB5B /* Resource.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7F962DDD15AE658900E1D012 /* Resource.cpp */; };
+		7F94A9B615B138250095AB5B /* ResourceManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7F962DDF15AE658900E1D012 /* ResourceManager.cpp */; };
+		7F94A9B715B138250095AB5B /* Sprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7F962DE115AE658900E1D012 /* Sprite.cpp */; };
+		7F94A9B815B138250095AB5B /* Stage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7F962DE315AE658900E1D012 /* Stage.cpp */; };
+		7F94A9B915B138250095AB5B /* TextField.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7F962DE515AE658900E1D012 /* TextField.cpp */; };
+		7F94A9BA15B1382A0095AB5B /* PlatformiOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7F962E0715AE6C9800E1D012 /* PlatformiOS.mm */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		7F1C047115ACB3E700F736FA /* libengine.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libengine.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		7F1C047415ACB3E700F736FA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		7F962DC815AE658900E1D012 /* Bitmap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Bitmap.cpp; sourceTree = "<group>"; };
+		7F962DC915AE658900E1D012 /* Bitmap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bitmap.h; sourceTree = "<group>"; };
+		7F962DCA15AE658900E1D012 /* BitmapData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BitmapData.cpp; sourceTree = "<group>"; };
+		7F962DCB15AE658900E1D012 /* BitmapData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BitmapData.h; sourceTree = "<group>"; };
+		7F962DCC15AE658900E1D012 /* common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
+		7F962DCD15AE658900E1D012 /* common_android.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = common_android.h; sourceTree = "<group>"; };
+		7F962DCE15AE658900E1D012 /* common_ios.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = common_ios.h; sourceTree = "<group>"; };
+		7F962DCF15AE658900E1D012 /* DisplayObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DisplayObject.cpp; sourceTree = "<group>"; };
+		7F962DD015AE658900E1D012 /* DisplayObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplayObject.h; sourceTree = "<group>"; };
+		7F962DD115AE658900E1D012 /* DisplayObjectContainer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DisplayObjectContainer.cpp; sourceTree = "<group>"; };
+		7F962DD215AE658900E1D012 /* DisplayObjectContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplayObjectContainer.h; sourceTree = "<group>"; };
+		7F962DD315AE658900E1D012 /* Engine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Engine.cpp; sourceTree = "<group>"; };
+		7F962DD415AE658900E1D012 /* Engine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Engine.h; sourceTree = "<group>"; };
+		7F962DD515AE658900E1D012 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
+		7F962DD615AE658900E1D012 /* EventDispatcher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EventDispatcher.cpp; sourceTree = "<group>"; };
+		7F962DD715AE658900E1D012 /* EventDispatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDispatcher.h; sourceTree = "<group>"; };
+		7F962DD815AE658900E1D012 /* Graphics.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Graphics.cpp; sourceTree = "<group>"; };
+		7F962DD915AE658900E1D012 /* Graphics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Graphics.h; sourceTree = "<group>"; };
+		7F962DDA15AE658900E1D012 /* IPlatformEventHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPlatformEventHandler.h; sourceTree = "<group>"; };
+		7F962DDB15AE658900E1D012 /* Platform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Platform.h; sourceTree = "<group>"; };
+		7F962DDC15AE658900E1D012 /* PlatformAndroid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlatformAndroid.cpp; sourceTree = "<group>"; };
+		7F962DDD15AE658900E1D012 /* Resource.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Resource.cpp; sourceTree = "<group>"; };
+		7F962DDE15AE658900E1D012 /* Resource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Resource.h; sourceTree = "<group>"; };
+		7F962DDF15AE658900E1D012 /* ResourceManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ResourceManager.cpp; sourceTree = "<group>"; };
+		7F962DE015AE658900E1D012 /* ResourceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceManager.h; sourceTree = "<group>"; };
+		7F962DE115AE658900E1D012 /* Sprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Sprite.cpp; sourceTree = "<group>"; };
+		7F962DE215AE658900E1D012 /* Sprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sprite.h; sourceTree = "<group>"; };
+		7F962DE315AE658900E1D012 /* Stage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Stage.cpp; sourceTree = "<group>"; };
+		7F962DE415AE658900E1D012 /* Stage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stage.h; sourceTree = "<group>"; };
+		7F962DE515AE658900E1D012 /* TextField.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TextField.cpp; sourceTree = "<group>"; };
+		7F962DE615AE658900E1D012 /* TextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextField.h; sourceTree = "<group>"; };
+		7F962E0715AE6C9800E1D012 /* PlatformiOS.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PlatformiOS.mm; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		7F1C046615ACB3E700F736FA = {
+			isa = PBXGroup;
+			children = (
+				7F962DC715AE658900E1D012 /* src */,
+				7F1C047315ACB3E700F736FA /* Frameworks */,
+				7F1C047215ACB3E700F736FA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7F1C047215ACB3E700F736FA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7F1C047115ACB3E700F736FA /* libengine.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7F1C047315ACB3E700F736FA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7F1C047415ACB3E700F736FA /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7F962DC715AE658900E1D012 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				7F962DC815AE658900E1D012 /* Bitmap.cpp */,
+				7F962DC915AE658900E1D012 /* Bitmap.h */,
+				7F962DCA15AE658900E1D012 /* BitmapData.cpp */,
+				7F962DCB15AE658900E1D012 /* BitmapData.h */,
+				7F962DCC15AE658900E1D012 /* common.h */,
+				7F962DCD15AE658900E1D012 /* common_android.h */,
+				7F962DCE15AE658900E1D012 /* common_ios.h */,
+				7F962DCF15AE658900E1D012 /* DisplayObject.cpp */,
+				7F962DD015AE658900E1D012 /* DisplayObject.h */,
+				7F962DD115AE658900E1D012 /* DisplayObjectContainer.cpp */,
+				7F962DD215AE658900E1D012 /* DisplayObjectContainer.h */,
+				7F962DD315AE658900E1D012 /* Engine.cpp */,
+				7F962DD415AE658900E1D012 /* Engine.h */,
+				7F962DD515AE658900E1D012 /* Event.h */,
+				7F962DD615AE658900E1D012 /* EventDispatcher.cpp */,
+				7F962DD715AE658900E1D012 /* EventDispatcher.h */,
+				7F962DD815AE658900E1D012 /* Graphics.cpp */,
+				7F962DD915AE658900E1D012 /* Graphics.h */,
+				7F962DDA15AE658900E1D012 /* IPlatformEventHandler.h */,
+				7F962DDB15AE658900E1D012 /* Platform.h */,
+				7F962DDC15AE658900E1D012 /* PlatformAndroid.cpp */,
+				7F962DDD15AE658900E1D012 /* Resource.cpp */,
+				7F962DDE15AE658900E1D012 /* Resource.h */,
+				7F962DDF15AE658900E1D012 /* ResourceManager.cpp */,
+				7F962DE015AE658900E1D012 /* ResourceManager.h */,
+				7F962DE115AE658900E1D012 /* Sprite.cpp */,
+				7F962DE215AE658900E1D012 /* Sprite.h */,
+				7F962DE315AE658900E1D012 /* Stage.cpp */,
+				7F962DE415AE658900E1D012 /* Stage.h */,
+				7F962DE515AE658900E1D012 /* TextField.cpp */,
+				7F962DE615AE658900E1D012 /* TextField.h */,
+				7F962E0715AE6C9800E1D012 /* PlatformiOS.mm */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7F1C047015ACB3E700F736FA /* engine */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7F1C047E15ACB3E700F736FA /* Build configuration list for PBXNativeTarget "engine" */;
+			buildPhases = (
+				7F94A9AC15B1380C0095AB5B /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = engine;
+			productName = engine;
+			productReference = 7F1C047115ACB3E700F736FA /* libengine.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7F1C046815ACB3E700F736FA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = 7F1C046B15ACB3E700F736FA /* Build configuration list for PBXProject "engine" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7F1C046615ACB3E700F736FA;
+			productRefGroup = 7F1C047215ACB3E700F736FA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7F1C047015ACB3E700F736FA /* engine */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7F94A9AC15B1380C0095AB5B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7F94A9BA15B1382A0095AB5B /* PlatformiOS.mm in Sources */,
+				7F94A9AD15B138250095AB5B /* Bitmap.cpp in Sources */,
+				7F94A9AE15B138250095AB5B /* BitmapData.cpp in Sources */,
+				7F94A9AF15B138250095AB5B /* DisplayObject.cpp in Sources */,
+				7F94A9B015B138250095AB5B /* DisplayObjectContainer.cpp in Sources */,
+				7F94A9B115B138250095AB5B /* Engine.cpp in Sources */,
+				7F94A9B215B138250095AB5B /* EventDispatcher.cpp in Sources */,
+				7F94A9B315B138250095AB5B /* Graphics.cpp in Sources */,
+				7F94A9B415B138250095AB5B /* PlatformAndroid.cpp in Sources */,
+				7F94A9B515B138250095AB5B /* Resource.cpp in Sources */,
+				7F94A9B615B138250095AB5B /* ResourceManager.cpp in Sources */,
+				7F94A9B715B138250095AB5B /* Sprite.cpp in Sources */,
+				7F94A9B815B138250095AB5B /* Stage.cpp in Sources */,
+				7F94A9B915B138250095AB5B /* TextField.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		7F1C047C15ACB3E700F736FA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_CPP_EXCEPTIONS = NO;
+				GCC_ENABLE_CPP_RTTI = NO;
+				GCC_OPTIMIZATION_LEVEL = 2;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					../deps/skia/include/core,
+					../deps/skia/include/gpu,
+					../deps/skia/include/images,
+					../deps/skia/include/config,
+					../deps/skia/src/gpu,
+				);
+				INCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "*.nib *.lproj *.framework *.gch *.xcode* (*) .DS_Store CVS .svn .git .hg";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = ../deps/skia/include/core;
+			};
+			name = Debug;
+		};
+		7F1C047D15ACB3E700F736FA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_CPP_EXCEPTIONS = NO;
+				GCC_ENABLE_CPP_RTTI = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					../deps/skia/include/core,
+					../deps/skia/include/gpu,
+					../deps/skia/include/images,
+					../deps/skia/include/config,
+					../deps/skia/src/gpu,
+				);
+				INCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "*.nib *.lproj *.framework *.gch *.xcode* (*) .DS_Store CVS .svn .git .hg";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = ../deps/skia/include/core;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7F1C047F15ACB3E700F736FA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/engine.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		7F1C048015ACB3E700F736FA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/engine.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7F1C046B15ACB3E700F736FA /* Build configuration list for PBXProject "engine" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7F1C047C15ACB3E700F736FA /* Debug */,
+				7F1C047D15ACB3E700F736FA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7F1C047E15ACB3E700F736FA /* Build configuration list for PBXNativeTarget "engine" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7F1C047F15ACB3E700F736FA /* Debug */,
+				7F1C048015ACB3E700F736FA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7F1C046815ACB3E700F736FA /* Project object */;
+}
