@@ -46,7 +46,7 @@ TextField::TextField(const std::string& face, uint size)
     _paint.setTextSize(size);
     _paint.setTextAlign(SkPaint::kLeft_Align);
     _paint.setARGB(255, 0, 0, 0);
-    str("");
+    text("");
 }
 
 TextField::~TextField()
