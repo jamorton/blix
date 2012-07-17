@@ -7,6 +7,7 @@
 #include <cstdlib>
 #include <string>
 #include <unordered_map>
+#include <functional>
 
 // Android Device
 #if defined(__ANDROID__)
@@ -68,5 +69,7 @@ static inline float u8ToFloat(uint8_t v)
 }
 
 typedef uint Color;
+
+#define memberFunc(f) std::bind(&f, this)
 
 #endif // ENGINE_COMMON_H

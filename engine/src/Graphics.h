@@ -3,10 +3,7 @@
 #define ENGINE_GRAPHICS_H
 
 #include "common.h"
-#include "SkRect.h"
-#include "SkPicture.h"
-#include "SkPaint.h"
-#include "SkPath.h"
+#include "skia.h"
 #include <vector>
 
 /**
@@ -17,13 +14,18 @@
  *
  */
 class SkCanvas;
+static void _dummyInv() { }
 
 class Graphics
 {
 
 public:
 
-    Graphics() : _hasFill(false), _hasStroke(false)
+    typedef std::function<void ()> InvalidateCallback;
+
+    Graphics(InvalidateCallback inv = &_dummyInv) :
+        _hasFill(false), _hasStroke(false),
+        _invCallback(inv)
     {
         _bounds.setEmpty();
     }
@@ -87,6 +89,23 @@ private:
     bool _hasStroke;
 
     SkRect _bounds;
+
+    float _lastX;
+    float _lastY;
+
+    InvalidateCallback _invCallback;
+
+    inline void _addBounds(const SkRect& r)
+    {
+        _bounds.join(r);
+        _invCallback();
+    }
+
+    inline void _addBounds(float x1, float y1, float x2, float y2)
+    {
+        _bounds.join(x1, y1, x2, y2);
+        _invCallback();
+    }
 };
 
 #endif

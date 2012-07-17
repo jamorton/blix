@@ -11,7 +11,7 @@
 class DisplayObjectContainer;
 class SkCanvas;
 
-class DisplayObject
+class DisplayObject : public EventDispatcher
 {
 
 private:

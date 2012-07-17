@@ -54,7 +54,7 @@ public:
     }
 };
 
-// The engine will this at startup
+// The engine will call this at startup
 Stage * createStage()
 {
     return new Game;

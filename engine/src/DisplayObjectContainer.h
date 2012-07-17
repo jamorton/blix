@@ -33,7 +33,7 @@ public:
 
 protected:
 
-    void _recalcBounds();
+    virtual void _recalcBounds();
 
 private:
 

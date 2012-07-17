@@ -15,7 +15,6 @@ void EventDispatcher::removeEventListener(event_type type)
     _listeners.erase(type);
 }
 
-
 void EventDispatcher::dispatchEvent(Event * e)
 {
     if (_listeners.count(e->type()) != 0)
