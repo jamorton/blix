@@ -6,6 +6,8 @@
 #include "Engine.h"
 #include <stdlib.h>
 
+#include <QuartzCore/QuartzCore.h>
+
 #import <UIKit/UIKit.h>
 #import <GLKit/GLKit.h>
 
@@ -56,17 +58,17 @@ static Engine * _engine;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+
     self.context = [[[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2] autorelease];
-    
+
     if (!self.context) {
         NSLog(@"Failed to create ES context");
     }
-    
+
     GLKView *view = (GLKView *)self.view;
     view.context = self.context;
     view.drawableStencilFormat = GLKViewDrawableStencilFormat8;
-    
+
     [EAGLContext setCurrentContext:self.context];
     _engine = new Engine;
     Platform::setHandler(_engine);
@@ -74,9 +76,9 @@ static Engine * _engine;
 }
 
 - (void)viewDidUnload
-{    
+{
     [super viewDidUnload];
-    
+
     if ([EAGLContext currentContext] == self.context) {
         [EAGLContext setCurrentContext:nil];
     }
@@ -145,7 +147,7 @@ static Engine * _engine;
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
+    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
 
@@ -178,7 +180,7 @@ void Platform::setHandler(IPlatformEventHandler * handler)
 
 double Platform::getTime()
 {
-    return CFAbsoluteTimeGetCurrent();
+    return CACurrentMediaTime();
 }
 
 void Platform::readFile(const std::string& path, std::string * out)
