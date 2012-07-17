@@ -1,5 +1,5 @@
 
-OBJ_PATH := $(ENGINE_PATH)/engine/android/obj/local/armeabi
+OBJ_PATH := $(ENGINE_PATH)/libs/android
 
 LOCAL_PATH := $(OBJ_PATH)
 include $(CLEAR_VARS)
