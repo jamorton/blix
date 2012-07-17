@@ -6,8 +6,12 @@
 
 void DisplayObject::update(SkCanvas * canvas)
 {
+    Event e(Event::ENTER_FRAME);
+    dispatchEvent(&e);
+
     canvas->save();
-    _applyTransform(canvas);
+    _recalcBounds();
+    canvas->concat(_transform);
 
     _draw(canvas);
 
@@ -17,16 +21,9 @@ void DisplayObject::update(SkCanvas * canvas)
     canvas->restore();
 }
 
-void DisplayObject::_applyTransform(SkCanvas * canvas)
-{
-    canvas->translate(x, y);
-    canvas->scale(scaleX, scaleY);
-    canvas->rotate(rotation);
-}
 
 void DisplayObject::_drawBounds(SkCanvas * canvas)
 {
-    _recalcBounds();
     SkPaint p;
     p.setARGB(255, 255, 0, 0);
     p.setStrokeWidth(1);
@@ -41,4 +38,14 @@ void DisplayObject::_invalidateBounds()
     _boundsInvalid = true;
     if (_parent != NULL)
         _parent->_invalidateBounds();
+}
+
+void DisplayObject::_recalcBounds()
+{
+    if (!_boundsInvalid)
+        return;
+    _transform.reset();
+    _transform.preTranslate(x, y);
+    _transform.preScale(scaleX, scaleY);
+    _transform.preRotate(rotation);
 }

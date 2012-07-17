@@ -71,5 +71,6 @@ static inline float u8ToFloat(uint8_t v)
 typedef uint Color;
 
 #define memberFunc(f) std::bind(&f, this)
+#define methodListener(f) std::bind(&f, this, std::placeholders::_1)
 
 #endif // ENGINE_COMMON_H

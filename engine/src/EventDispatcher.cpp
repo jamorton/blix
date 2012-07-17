@@ -1,7 +1,8 @@
 
 #include "EventDispatcher.h"
 
-void EventDispatcher::addEventListener(event_type type, EventDispatcher::EventFunc func)
+void EventDispatcher::addEventListener(EventType type,
+    EventDispatcher::EventFunc func)
 {
     if (_listeners.count(type) != 0) {
         DBG_LOG("ERROR: addEventListener called on type %d which is already bound", type);
@@ -10,7 +11,7 @@ void EventDispatcher::addEventListener(event_type type, EventDispatcher::EventFu
     _listeners[type] = func;
 }
 
-void EventDispatcher::removeEventListener(event_type type)
+void EventDispatcher::removeEventListener(EventType type)
 {
     _listeners.erase(type);
 }

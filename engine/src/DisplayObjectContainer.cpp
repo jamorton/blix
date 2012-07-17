@@ -5,8 +5,12 @@
 
 void DisplayObjectContainer::update(SkCanvas * canvas)
 {
+    Event e(Event::ENTER_FRAME);
+    dispatchEvent(&e);
+
     canvas->save();
-    _applyTransform(canvas);
+    _recalcBounds();
+    canvas->concat(_transform);
 
     _draw(canvas);
 
@@ -42,13 +46,14 @@ void DisplayObjectContainer::_recalcBounds()
 {
     if (!_boundsInvalid)
         return;
+    DisplayObject::_recalcBounds();
     _bounds.setEmpty();
     // a DOC's bounds is the  union of its children's bounds
     for (int i = 0; i < _children.size(); i++) {
         DisplayObject * child = _children[i];
         child->_recalcBounds();
-        SkRect bound = child->_bounds;
-        bound.offset(child->x, child->y);
+        SkRect bound;
+        child->_transform.mapRect(&bound, child->_bounds);
         _bounds.join(bound);
     }
 }

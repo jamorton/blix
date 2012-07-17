@@ -142,13 +142,6 @@ void Graphics::moveTo(float x, float y)
     }
     if (_hasStroke)
         _cmds[_strokeIdx].path.moveTo(x, y);
-    /*
-    _ensureValidFill();
-    DrawCmd cmd(DrawCmd::TYPE_MOVE_TO);
-    cmd.floats.f1 = x;
-    cmd.floats.f2 = y;
-    _cmds.push_back(cmd);
-    */
 }
 
 void Graphics::lineTo(float x, float y)

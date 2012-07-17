@@ -95,16 +95,16 @@ protected:
     bool   _boundsInvalid;
 
     void _invalidateBounds();
-    virtual void _recalcBounds() { }
-
+    virtual void _recalcBounds();
     void _drawBounds(SkCanvas * canvas);
+
+    SkMatrix _transform;
 
 private:
 
     friend class DisplayObjectContainer;
     DisplayObjectContainer * _parent;
     size_t _containerIndex;
-    void _applyTransform(SkCanvas * canvas);
 
 };
 

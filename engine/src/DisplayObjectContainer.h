@@ -18,18 +18,17 @@ public:
     void addChild(DisplayObject * child);
     void removeChild(DisplayObject * child);
 
-    inline size_t numChildren() { return _children.size(); }
+    inline size_t numChildren()  const { return _children.size(); }
 
-    inline bool contains(DisplayObject * child) {
+    inline bool contains(DisplayObject * child) const {
         return child->_parent == this;
     }
 
-    inline size_t getChildIndex(DisplayObject * child) {
+    inline size_t getChildIndex(DisplayObject * child) const {
         if (!contains(child))
             return 0;
         return child->_containerIndex;
     }
-
 
 protected:
 

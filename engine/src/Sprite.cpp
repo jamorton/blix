@@ -9,6 +9,8 @@ void Sprite::_draw(SkCanvas * canvas)
 
 void Sprite::_recalcBounds()
 {
+    if (!_boundsInvalid)
+        return;
     DisplayObjectContainer::_recalcBounds();
     _bounds.join(graphics.bounds());
 }
