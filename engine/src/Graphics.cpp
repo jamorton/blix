@@ -156,7 +156,6 @@ void Graphics::lineTo(float x, float y)
     _addBounds(_lastX, _lastY, x, y);
     _lastX = x;
     _lastY = y;
-    SkPoint p;
     if (_hasFill)
         _cmds[_fillIdx].path.lineTo(x, y);
     if (_hasStroke)

@@ -97,13 +97,18 @@ private:
 
     inline void _addBounds(const SkRect& r)
     {
-        _bounds.join(r);
-        _invCallback();
+        _addBounds(r.left(), r.top(), r.right(), r.bottom());
     }
 
     inline void _addBounds(float x1, float y1, float x2, float y2)
     {
-        _bounds.join(x1, y1, x2, y2);
+        SkRect r, storage;
+        r.set(x1, y1, x2, y2);
+        r.sort();
+        if (_hasStroke)
+            if (_cmds[_strokeIdx].paint.canComputeFastBounds())
+                r = _cmds[_strokeIdx].paint.computeFastBounds(r, &storage);
+        _bounds.join(r);
         _invCallback();
     }
 };
