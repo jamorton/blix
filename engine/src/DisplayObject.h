@@ -68,6 +68,8 @@ public:
         rotation(0, this),
         scaleX(1, this),
         scaleY(1, this),
+        regX(0, this),
+        regY(0, this),
         _parent(NULL), _boundsInvalid(true)
     {
         _bounds.set(0, 0, 0, 0);
@@ -77,7 +79,7 @@ public:
 
     virtual void update(SkCanvas * canvas);
 
-    Property x, y, alpha, rotation, scaleX, scaleY;
+    Property x, y, alpha, rotation, scaleX, scaleY, regX, regY;
 
     inline float width() { _recalcBounds(); return _bounds.width() * scaleX; }
     inline float height() { _recalcBounds(); return _bounds.height() * scaleX; }

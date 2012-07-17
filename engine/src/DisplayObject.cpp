@@ -44,8 +44,13 @@ void DisplayObject::_recalcBounds()
 {
     if (!_boundsInvalid)
         return;
+    // this is a good place to update the transform cache.
+    // some things that invalidate the bounds don't invalidate the
+    // transform, but it doens't seem worth it to have whole separate
+    // _transformInvalid system
     _transform.reset();
-    _transform.preTranslate(x, y);
-    _transform.preScale(scaleX, scaleY);
-    _transform.preRotate(rotation);
+    _transform.preTranslate(x - regX, y - regY);
+    _transform.preScale(scaleX, scaleY, regX, regY);
+    _transform.preRotate(rotation, regX, regY);
+    _boundsInvalid = false;
 }
