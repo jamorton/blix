@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+        package="com.jonanin.blixtests"
+        android:versionCode="1"
+        android:versionName="1.0">
+
+    <uses-sdk android:minSdkVersion="10" />
+
+    <application android:label="@string/app_name" android:hasCode="false"
+                 android:debuggable="true"
+                 android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+
+        <activity android:name="android.app.NativeActivity"
+                android:label="@string/app_name"
+                android:configChanges="orientation|keyboardHidden">
+
+            <!-- Name of our library .SO file -->
+            <meta-data android:name="android.app.lib_name"
+                    android:value="BlixTests" />
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
+
+    </application>
+
+</manifest>

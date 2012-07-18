@@ -1,0 +1,3 @@
+
+In order to run a test, rename SET_ACTIVE_TEST.h.sample to SET_ACTIVE_TEST.h
+and change the ACTIVE_TEST definition to a corresponding test in src

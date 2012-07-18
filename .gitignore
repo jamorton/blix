@@ -6,6 +6,7 @@
 */android/obj/
 */android/libs/
 */android/proguard-project.txt
+*/android/assets
 *.a
 engine/build
 deps/*/build
@@ -13,3 +14,4 @@ project.xcworkspace/
 xcuserdata/
 .\#.*
 \#*\#
+SET_ACTIVE_TEST.h
