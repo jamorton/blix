@@ -21,7 +21,6 @@ void DisplayObject::update(SkCanvas * canvas)
     canvas->restore();
 }
 
-
 void DisplayObject::_drawBounds(SkCanvas * canvas)
 {
     SkPaint p;

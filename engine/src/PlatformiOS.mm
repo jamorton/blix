@@ -167,6 +167,38 @@ static Engine * _engine;
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+- (void)touchesBegan:(NSSet*)touches withEvent:(UIEvent*)event 
+{
+    for(UITouch* touch in touches) 
+    {
+        CGPoint point = [touch locationInView:self.viewController.view];
+        _handler->onTouchEvent(IPlatformEventHandler::TOUCH_DOWN, point.x, point.y, [touch hash]);
+    }
+}
+
+- (void)touchesEnded:(NSSet*)touches withEvent:(UIEvent*)event 
+{
+    for(UITouch* touch in touches) 
+    {
+        CGPoint point = [touch locationInView:self.viewController.view];
+        _handler->onTouchEvent(IPlatformEventHandler::TOUCH_UP, point.x, point.y, [touch hash]);
+    }
+}
+
+- (void)touchesCancelled:(NSSet*)touches withEvent:(UIEvent*)event 
+{
+    [self touchesEnded:touches withEvent:event];
+}
+
+- (void)touchesMoved:(NSSet*)touches withEvent:(UIEvent*)event 
+{
+    for(UITouch* touch in touches) 
+    {
+        CGPoint point = [touch locationInView:self.viewController.view];
+        _handler->onTouchEvent(IPlatformEventHandler::TOUCH_MOVE, point.x, point.y, [touch hash]);
+    }
+}
+
 @end
 
 //---------------------------------------------------------------

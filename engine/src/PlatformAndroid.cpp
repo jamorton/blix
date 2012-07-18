@@ -187,33 +187,45 @@ static int32_t _handleInput(android_app * app, AInputEvent * event)
     if (AInputEvent_getType(event) != AINPUT_EVENT_TYPE_MOTION)
         return 0;
 
-    PlatformTouchEvent ev;
+    uint action = AMotionEvent_getAction(event);
 
-    ev.x = AMotionEvent_getX(event, 0);
-    ev.y = AMotionEvent_getY(event, 0);
+    uint ptrIdx = (action & AMOTION_EVENT_ACTION_POINTER_INDEX_MASK) >>
+        AMOTION_EVENT_ACTION_POINTER_INDEX_SHIFT;
 
-    int index = AMotionEvent_getAction(event) & AMOTION_EVENT_ACTION_POINTER_INDEX_MASK;
-    ev.id = AMotionEvent_getPointerId(event, index);
-
-    switch (AMotionEvent_getAction(event) & AMOTION_EVENT_ACTION_MASK) {
+    switch (action & AMOTION_EVENT_ACTION_MASK) {
 
     case AMOTION_EVENT_ACTION_DOWN:
-    case AMOTION_EVENT_ACTION_POINTER_DOWN:
-        ev.type = PlatformTouchEvent::ACTION_DOWN;
+        plat.handler->onTouchEvent(IPlatformEventHandler::TOUCH_DOWN,
+            AMotionEvent_getX(event, 0), AMotionEvent_getY(event, 0),
+            AMotionEvent_getPointerId(event, 0));
         break;
 
     case AMOTION_EVENT_ACTION_UP:
+        plat.handler->onTouchEvent(IPlatformEventHandler::TOUCH_UP,
+            AMotionEvent_getX(event, 0), AMotionEvent_getY(event, 0),
+            AMotionEvent_getPointerId(event, 0));
+        break;
+
+    case AMOTION_EVENT_ACTION_POINTER_DOWN:
+        plat.handler->onTouchEvent(IPlatformEventHandler::TOUCH_DOWN,
+            AMotionEvent_getX(event, ptrIdx), AMotionEvent_getY(event, ptrIdx),
+            AMotionEvent_getPointerId(event, ptrIdx));
+        break;
+
     case AMOTION_EVENT_ACTION_POINTER_UP:
-        ev.type = PlatformTouchEvent::ACTION_UP;
+        plat.handler->onTouchEvent(IPlatformEventHandler::TOUCH_UP,
+            AMotionEvent_getX(event, ptrIdx), AMotionEvent_getY(event, ptrIdx),
+            AMotionEvent_getPointerId(event, ptrIdx));
         break;
 
     case AMOTION_EVENT_ACTION_MOVE:
-        ev.type = PlatformTouchEvent::ACTION_MOVE;
+        uint ptrCount = AMotionEvent_getPointerCount(event);
+        for (uint i = 0; i < ptrCount; i++)
+            plat.handler->onTouchEvent(IPlatformEventHandler::TOUCH_MOVE,
+                AMotionEvent_getX(event, i), AMotionEvent_getY(event, i),
+                AMotionEvent_getPointerId(event, i));
         break;
-
     }
-
-    plat.handler->onTouchEvent(ev);
 
     return 0;
 }
@@ -257,12 +269,10 @@ static void _eventLoop()
                     while (ASensorEventQueue_getEvents(plat.sensorEventQueue,
                             &event, 1) > 0) {
 
-                        plat.handler->onAccelData(
-                            PlatformAccelData(
-                                event.acceleration.x,
-                                event.acceleration.y,
-                                event.acceleration.z
-                            )
+                        plat.handler->onAccelEvent(
+                            event.acceleration.x,
+                            event.acceleration.y,
+                            event.acceleration.z
                         );
                     }
                 }

@@ -26,8 +26,8 @@ public:
     void onLoaded();
     void onUnload();
 
-    void onTouchEvent(PlatformTouchEvent event);
-    void onAccelData(PlatformAccelData event);
+    void onTouchEvent(TouchType type, float x, float y, uint id);
+    void onAccelEvent(float x, float y, float z);
 
     static bool DRAW_BOUNDS;
 

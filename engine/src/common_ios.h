@@ -7,6 +7,6 @@
 
 #include <stdio.h>
 
-#define DBG_LOG(x, ...) do { printf(x, __VA_ARGS__); printf("\n"); } while (0)
+#define DBG_LOG(...) do { printf(__VA_ARGS__); printf("\n"); } while (0)
 
 #endif
