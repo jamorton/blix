@@ -50,6 +50,22 @@ void DisplayObject::_recalcBounds()
     _transform.reset();
     _transform.preTranslate(x - regX, y - regY);
     _transform.preScale(scaleX, scaleY, regX, regY);
-    _transform.preRotate(rotation, regX, regY);
+    // if we call rotation functions on matrices they disable certain fast paths
+    // the common case is that rotation is 0
+    if (rotation != 0)
+        _transform.preRotate(rotation, regX, regY);
     _boundsInvalid = false;
+}
+
+void DisplayObject::_inverseTransform(SkMatrix& m)
+{
+    m.setRotate(-rotation, regX, regY);
+    m.preScale( 1 / scaleX, 1 / scaleY, regX, regY);
+    m.preTranslate(-(x - regX), -(y - regY));
+}
+
+void DisplayObject::_handleTouch(TouchEvent * event, SkMatrix * m)
+{
+    event->target(this);
+    dispatchEvent(event);
 }

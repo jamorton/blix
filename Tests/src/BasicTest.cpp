@@ -1,10 +1,11 @@
 
-
 #include "Test.h"
+#include "Sprite.h"
+#include "Bitmap.h"
+#include "TextField.h"
 
 class BasicTest : public Test
 {
-    
 public:
     
     TextField text;

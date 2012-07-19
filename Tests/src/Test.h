@@ -3,10 +3,6 @@
 #define TESTS_TEST_H
 
 #include "Stage.h"
-#include "Sprite.h"
-#include "Bitmap.h"
-#include "TextField.h"
-#include "Engine.h"
 
 class Test : public Stage
 {

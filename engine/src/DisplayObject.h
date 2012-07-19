@@ -93,6 +93,8 @@ protected:
 
     virtual void _draw(SkCanvas * canvas) { }
 
+    const SkRect& bounds() { _recalcBounds(); return _bounds; }
+
     SkRect _bounds;
     bool   _boundsInvalid;
 
@@ -102,11 +104,16 @@ protected:
 
     SkMatrix _transform;
 
+    void _inverseTransform(SkMatrix& m);
+
 private:
 
     friend class DisplayObjectContainer;
     DisplayObjectContainer * _parent;
     size_t _containerIndex;
+
+    friend class Engine;
+    virtual void _handleTouch(TouchEvent * event, SkMatrix * m);
 
 };
 

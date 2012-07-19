@@ -38,6 +38,9 @@ private:
 
     std::vector<DisplayObject *> _children;
 
+    friend class Engine;
+    virtual void _handleTouch(TouchEvent * event, SkMatrix * m);
+
 };
 
 #endif

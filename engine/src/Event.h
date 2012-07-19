@@ -14,10 +14,12 @@ public:
     inline EventType type() { return _type; }
 
     template <typename T>
-    inline T * event() { return static_cast<T *>(this); }
+    inline T * get() { return static_cast<T *>(this); }
 
     template <typename T>
     inline T * target() { return reinterpret_cast<T *>(_target); }
+
+    void * target() { return _target; }
 
     inline void target(void * t) { _target = t; }
 
@@ -35,16 +37,20 @@ public:
 class TouchEvent : public Event
 {
 public:
-    TouchEvent(EventType t, float x, float y, uint id) :
-        Event(t), _x(x), _y(y), _id(id) { }
+    TouchEvent(EventType t, float lx, float ly, float sx, float sy, uint id) :
+        Event(t), _localX(lx), _localY(ly), _stageX(sx), _stageY(sy), _id(id) { }
 
-    inline float x() { return _x; }
-    inline float y() { return _y; }
+    inline float localX() { return _localX; }
+    inline float localY() { return _localY; }
+    inline float stageX() { return _stageX; }
+    inline float stageY() { return _stageY; }
+
     inline uint id() { return _id; }
 
 private:
 
-    float _x, _y;
+    friend class DisplayObjectContainer; // so it can set _localX
+    float _localX, _localY, _stageX, _stageY;
     uint _id;
 
 public:

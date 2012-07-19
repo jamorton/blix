@@ -51,9 +51,39 @@ void DisplayObjectContainer::_recalcBounds()
     // a DOC's bounds is the  union of its children's bounds
     for (int i = 0; i < _children.size(); i++) {
         DisplayObject * child = _children[i];
-        child->_recalcBounds();
         SkRect bound;
-        child->_transform.mapRect(&bound, child->_bounds);
+        child->_transform.mapRect(&bound, child->bounds());
         _bounds.join(bound);
     }
+}
+
+// TODO: a DOC's _handleTouch basically implements a globalToLocal.
+// should extract that out to a separate method and cache the results
+void DisplayObjectContainer::_handleTouch(TouchEvent * event, SkMatrix * m)
+{
+    SkMatrix trans;
+    SkPoint pt;
+
+    // find the first child (from front of display list back)
+    // that has bounds the touch point are contained in.
+    for (int i = _children.size() - 1; i >= 0; i--) {
+        DisplayObject * child = _children[i];
+
+        child->_inverseTransform(trans);
+        trans.setConcat(trans, *m);
+
+        pt.set(event->stageX(), event->stageY());
+        trans.mapPoints(&pt, &pt, 1);
+
+        if (child->bounds().contains(pt)) {
+            *m = trans;
+            // these will get overwritten until we reach a display object
+            // and the local coords will be correct then
+            event->_localX = pt.x();
+            event->_localY = pt.y();
+            child->_handleTouch(event, m);
+            break;
+        }
+    }
+    dispatchEvent(event);
 }

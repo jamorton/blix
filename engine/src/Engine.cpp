@@ -117,9 +117,10 @@ void Engine::onTouchEvent(TouchType type, float x, float y, uint id)
         (type == TOUCH_UP ? TouchEvent::UP
             : TouchEvent::MOVE);
 
-    TouchEvent e(evt, x, y, id);
-    DBG_LOG("%d - %f %f %d", evt, x, y, id);
-    //    _stage->_handleTouch(&e);
+    TouchEvent e(evt, 0, 0, x, y, id);
+    SkMatrix m;
+    m.reset();
+    _stage->_handleTouch(&e, &m);
 }
 
 void Engine::onAccelEvent(float x, float y, float z) { }
