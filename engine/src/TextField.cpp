@@ -65,16 +65,13 @@ void TextField::text(const std::string& s)
     _bounds.offset(_offsetX, _offsetY);
 }
 
-void TextField::color(Color color, float alpha)
+void TextField::color(Color color)
 {
-    _paint.setARGB(
-        floatToU8(alpha),
-        (color >> 16) & 0xFF,
-        (color >> 8)  & 0xFF,
-        color & 0xFF);
+    _paint.setColor(color);
 }
 
-void TextField::_draw(SkCanvas * canvas)
+void TextField::_draw(Canvas * canvas)
 {
+    _paint.setAlpha(canvas->curAlpha());
     canvas->drawText(_str.c_str(), _str.size(), _offsetX, _offsetY, _paint);
 }

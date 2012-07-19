@@ -20,8 +20,9 @@ Bitmap::~Bitmap()
     _data->release();
 }
 
-void Bitmap::_draw(SkCanvas * canvas)
+void Bitmap::_draw(Canvas * canvas)
 {
+    _bitmapPaint.setAlpha(canvas->curAlpha());
     canvas->drawBitmap(
         _data->bitmap(),
         x - round(x), y - round(y), // snap to nearest pixel

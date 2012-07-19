@@ -6,8 +6,6 @@
 #include "DisplayObjectContainer.h"
 #include "Graphics.h"
 
-class SkCanvas;
-
 class Sprite : public DisplayObjectContainer
 {
 
@@ -21,7 +19,7 @@ public:
 protected:
 
     void _recalcBounds();
-    void _draw(SkCanvas * canvas);
+    void _draw(Canvas * canvas);
 
 private:
 

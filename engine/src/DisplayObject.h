@@ -4,12 +4,9 @@
 
 #include "common.h"
 #include "EventDispatcher.h"
-
-#include "SkMatrix.h"
-#include "SkRect.h"
+#include "skia.h"
 
 class DisplayObjectContainer;
-class SkCanvas;
 
 class DisplayObject : public EventDispatcher
 {
@@ -20,19 +17,19 @@ private:
     // So we can have:
     //     foo.x += bar.x++;
     // Instead of:
-    //     foo.x(foo.x() + bar.x(bar.x() + 1));
+    //     foo.x(foo.x() + bar.x()); bar.x(bar.x() + 1);
     class Property
     {
     public:
         Property(float val, DisplayObject * obj) : _val(val), _obj(obj) { }
 
-#define INV _obj->_invalidateBounds();
+#define INV _obj->_invalidateBounds()
 #define DECL template <typename T> inline
-        DECL float operator=(T val) { INV; return _val = val; }
-        DECL float operator+(T val) const { return _val + val; }
-        DECL float operator-(T val) const { return _val - val; }
-        DECL float operator*(T val) const { return _val * val; }
-        DECL float operator/(T val) const { return _val / val; }
+        DECL float operator=(T v)       { INV; return _val = v; }
+        DECL float operator+(T v) const { return _val + v; }
+        DECL float operator-(T v) const { return _val - v; }
+        DECL float operator*(T v) const { return _val * v; }
+        DECL float operator/(T v) const { return _val / v; }
         DECL float operator+() const { return +_val; }
         DECL float operator-() const { return -_val; }
         DECL float operator++()          { INV; return ++_val; }
@@ -45,11 +42,11 @@ private:
         DECL bool operator<(T other) const  { return _val <  other; }
         DECL bool operator>=(T other) const { return _val >= other; }
         DECL bool operator<=(T other) const { return _val <= other; }
-        DECL float operator+=(T val) { INV; return _val += val; }
-        DECL float  operator-=(T val) { INV; return _val -= val; }
-        DECL float operator*=(T val) { INV; return _val *= val; }
-        DECL float operator/=(T val) { INV; return _val /= val; }
-        inline operator float () { return _val; }
+        DECL float operator+=(T v) { INV; return _val += v; }
+        DECL float operator-=(T v) { INV; return _val -= v; }
+        DECL float operator*=(T v) { INV; return _val *= v; }
+        DECL float operator/=(T v) { INV; return _val /= v; }
+        inline operator float()        { return _val; }
 #undef DECL
 #undef INV
 
@@ -64,12 +61,13 @@ public:
     DisplayObject():
         x(0, this),
         y(0, this),
-        alpha(1, this),
         rotation(0, this),
         scaleX(1, this),
         scaleY(1, this),
         regX(0, this),
         regY(0, this),
+        alpha(1),
+        visible(true),
         _parent(NULL), _boundsInvalid(true)
     {
         _bounds.set(0, 0, 0, 0);
@@ -77,9 +75,11 @@ public:
 
     virtual ~DisplayObject() { }
 
-    virtual void update(SkCanvas * canvas);
+    virtual void update(Canvas * canvas);
 
-    Property x, y, alpha, rotation, scaleX, scaleY, regX, regY;
+    Property x, y, rotation, scaleX, scaleY, regX, regY;
+    float alpha;
+    bool visible;
 
     inline float width() { _recalcBounds(); return _bounds.width() * scaleX; }
     inline float height() { _recalcBounds(); return _bounds.height() * scaleX; }
@@ -91,7 +91,7 @@ public:
 
 protected:
 
-    virtual void _draw(SkCanvas * canvas) { }
+    virtual void _draw(Canvas * canvas) { }
 
     const SkRect& bounds() { _recalcBounds(); return _bounds; }
 
@@ -100,7 +100,7 @@ protected:
 
     void _invalidateBounds();
     virtual void _recalcBounds();
-    void _drawBounds(SkCanvas * canvas);
+    void _drawBounds(Canvas * canvas);
 
     SkMatrix _transform;
 

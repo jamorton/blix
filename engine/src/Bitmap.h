@@ -16,7 +16,7 @@ public:
 
 protected:
 
-    void _draw(SkCanvas * canvas);
+    void _draw(Canvas * canvas);
 
 private:
 

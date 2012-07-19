@@ -9,7 +9,7 @@
 class GrContext;
 class GrGLInterface;
 class GrRenderTarget;
-class SkCanvas;
+class Canvas;
 
 class DisplayObject;
 class Stage;
@@ -36,7 +36,7 @@ private:
     GrContext * _context;
     const GrGLInterface * _interface;
     GrRenderTarget * _renderTarget;
-    SkCanvas * _canvas;
+    Canvas * _canvas;
     Stage * _stage;
 
 };

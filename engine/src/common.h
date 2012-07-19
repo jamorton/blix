@@ -60,7 +60,7 @@ namespace Math {
 
 static inline uint8_t floatToU8(float v)
 {
-    return (uint8_t)floor(Math::clamp(v, 0.0f, 0.99999f)*256);
+    return (uint8_t)floor(v*255);
 }
 
 static inline float u8ToFloat(uint8_t v)

@@ -81,7 +81,7 @@ void Engine::onLoaded()
     _renderTarget = _context->createPlatformRenderTarget(desc);
 
     SkGpuDevice * dev = new SkGpuDevice(_context, _renderTarget);
-    _canvas = new SkCanvas(dev);
+    _canvas = new Canvas(dev);
     dev->unref();
 
     _stage = createStage();

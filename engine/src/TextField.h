@@ -35,11 +35,11 @@ public:
     inline const std::string& text() const { return _str; }
     void text(const std::string& s);
 
-    void color(uint color = 0, float alpha = 1.0);
+    void color(uint color);
 
 protected:
 
-    void _draw(SkCanvas * canvas);
+    void _draw(Canvas * canvas);
 
 private:
 

@@ -69,7 +69,7 @@ public:
 
     void clear();
 
-    void draw(SkCanvas * canvas);
+    void draw(Canvas * canvas);
 
 private:
 

@@ -215,8 +215,12 @@ void Graphics::clear()
     _invCallback();
 }
 
-void Graphics::draw(SkCanvas * canvas)
+void Graphics::draw(Canvas * canvas)
 {
-    for (int i = 0; i < _cmds.size(); i++)
+    for (int i = 0; i < _cmds.size(); i++) {
+        uint8_t prevAlpha = _cmds[i].paint.getAlpha();
+        _cmds[i].paint.setAlpha(alphaU8Mul(canvas->curAlpha(), prevAlpha));
         canvas->drawPath(_cmds[i].path, _cmds[i].paint);
+        _cmds[i].paint.setAlpha(prevAlpha);
+    }
 }

@@ -2,7 +2,7 @@
 #include "Sprite.h"
 #include "skia.h"
 
-void Sprite::_draw(SkCanvas * canvas)
+void Sprite::_draw(Canvas * canvas)
 {
     graphics.draw(canvas);
 }

@@ -13,7 +13,7 @@ public:
 
     virtual ~DisplayObjectContainer() { }
 
-    void update(SkCanvas * canvas);
+    void update(Canvas * canvas);
 
     void addChild(DisplayObject * child);
     void removeChild(DisplayObject * child);

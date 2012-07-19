@@ -4,24 +4,29 @@
 #include "Engine.h"
 #include "skia.h"
 
-void DisplayObject::update(SkCanvas * canvas)
+void DisplayObject::update(Canvas * canvas)
 {
+    _recalcBounds();
     Event e(Event::ENTER_FRAME);
     dispatchEvent(&e);
 
+    if (!visible)
+        return;
+
     canvas->save();
-    _recalcBounds();
     canvas->concat(_transform);
+    canvas->concatAlpha(alpha);
 
     _draw(canvas);
 
     if (Engine::DRAW_BOUNDS)
         _drawBounds(canvas);
 
+    canvas->restoreAlpha();
     canvas->restore();
 }
 
-void DisplayObject::_drawBounds(SkCanvas * canvas)
+void DisplayObject::_drawBounds(Canvas * canvas)
 {
     SkPaint p;
     p.setARGB(255, 255, 0, 0);

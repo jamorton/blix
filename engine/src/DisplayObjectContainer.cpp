@@ -3,14 +3,19 @@
 #include "Engine.h"
 #include "skia.h"
 
-void DisplayObjectContainer::update(SkCanvas * canvas)
+void DisplayObjectContainer::update(Canvas * canvas)
 {
+    _recalcBounds();
+
     Event e(Event::ENTER_FRAME);
     dispatchEvent(&e);
 
+    if (!visible)
+        return;
+
     canvas->save();
-    _recalcBounds();
     canvas->concat(_transform);
+    canvas->concatAlpha(alpha);
 
     _draw(canvas);
 
@@ -20,6 +25,7 @@ void DisplayObjectContainer::update(SkCanvas * canvas)
     if (Engine::DRAW_BOUNDS)
         _drawBounds(canvas);
 
+    canvas->restoreAlpha();
     canvas->restore();
 }
 
@@ -57,7 +63,7 @@ void DisplayObjectContainer::_recalcBounds()
     }
 }
 
-// TODO: a DOC's _handleTouch basically implements a globalToLocal.
+// TODO: a DOC's _handleTouch basically implements globalToLocal.
 // should extract that out to a separate method and cache the results
 void DisplayObjectContainer::_handleTouch(TouchEvent * event, SkMatrix * m)
 {

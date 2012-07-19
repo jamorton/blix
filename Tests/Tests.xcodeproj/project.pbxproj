@@ -14,6 +14,7 @@
 		7F0539A515B62ED70092A3BC /* BasicTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7F0539A415B62ED70092A3BC /* BasicTest.cpp */; };
 		7F0DE0B115B576AF007016BF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F0DE0B015B576AF007016BF /* QuartzCore.framework */; };
 		7F827EC515B77DD200733049 /* ClickTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7F827EC415B77DD200733049 /* ClickTest.cpp */; };
+		7F91DD6E15B80B7B00E8DFB3 /* AlphaTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7F91DD6D15B80B7B00E8DFB3 /* AlphaTest.cpp */; };
 		7F962E1915AE81A500E1D012 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F962E1815AE81A500E1D012 /* UIKit.framework */; };
 		7F962E1B15AE81A500E1D012 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F962E1A15AE81A500E1D012 /* Foundation.framework */; };
 		7F962E1D15AE81A500E1D012 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F962E1C15AE81A500E1D012 /* CoreGraphics.framework */; };
@@ -34,6 +35,7 @@
 		7F0539A615B62FE70092A3BC /* Test.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Test.h; path = src/Test.h; sourceTree = "<group>"; };
 		7F0DE0B015B576AF007016BF /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		7F827EC415B77DD200733049 /* ClickTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ClickTest.cpp; path = src/ClickTest.cpp; sourceTree = "<group>"; };
+		7F91DD6D15B80B7B00E8DFB3 /* AlphaTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AlphaTest.cpp; path = src/AlphaTest.cpp; sourceTree = "<group>"; };
 		7F962E1415AE81A500E1D012 /* GameTemplate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameTemplate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F962E1815AE81A500E1D012 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		7F962E1A15AE81A500E1D012 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -111,6 +113,7 @@
 				7F0539A315B62E4A0092A3BC /* SET_ACTIVE_TEST.h */,
 				7F0539A615B62FE70092A3BC /* Test.h */,
 				7F827EC415B77DD200733049 /* ClickTest.cpp */,
+				7F91DD6D15B80B7B00E8DFB3 /* AlphaTest.cpp */,
 			);
 			name = src;
 			sourceTree = "<group>";
@@ -190,6 +193,7 @@
 				7FDCF9D615AEE91300633331 /* Runner.cpp in Sources */,
 				7F0539A515B62ED70092A3BC /* BasicTest.cpp in Sources */,
 				7F827EC515B77DD200733049 /* ClickTest.cpp in Sources */,
+				7F91DD6E15B80B7B00E8DFB3 /* AlphaTest.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
