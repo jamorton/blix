@@ -26,30 +26,28 @@ private:
         Property(float val, DisplayObject * obj) : _val(val), _obj(obj) { }
 
 #define INV _obj->_invalidateBounds()
-#define DECL template <typename T> inline
-        DECL float operator=(T v)       { INV; return _val = v; }
-        DECL float operator+(T v) const { return _val + v; }
-        DECL float operator-(T v) const { return _val - v; }
-        DECL float operator*(T v) const { return _val * v; }
-        DECL float operator/(T v) const { return _val / v; }
-        DECL float operator+() const { return +_val; }
-        DECL float operator-() const { return -_val; }
-        DECL float operator++()          { INV; return ++_val; }
-        DECL float operator++(int dummy) { INV; return _val++; }
-        DECL float operator--()          { INV; return --_val; }
-        DECL float operator--(int dummy) { INV; return _val--; }
-        DECL bool operator==(T other) const { return _val == other; }
-        DECL bool operator!=(T other) const { return _val != other; }
-        DECL bool operator>(T other) const  { return _val >  other; }
-        DECL bool operator<(T other) const  { return _val <  other; }
-        DECL bool operator>=(T other) const { return _val >= other; }
-        DECL bool operator<=(T other) const { return _val <= other; }
-        DECL float operator+=(T v) { INV; return _val += v; }
-        DECL float operator-=(T v) { INV; return _val -= v; }
-        DECL float operator*=(T v) { INV; return _val *= v; }
-        DECL float operator/=(T v) { INV; return _val /= v; }
+        template <typename T> inline float operator=(T v)       { INV; return _val = v; }
+        template <typename T> inline float operator+(T v) const { return _val + v; }
+        template <typename T> inline float operator-(T v) const { return _val - v; }
+        template <typename T> inline float operator*(T v) const { return _val * v; }
+        template <typename T> inline float operator/(T v) const { return _val / v; }
+        template <typename T> inline float operator+() const { return +_val; }
+        template <typename T> inline float operator-() const { return -_val; }
+        template <typename T> inline float operator++()          { INV; return ++_val; }
+        template <typename T> inline float operator++(int dummy) { INV; return _val++; }
+        template <typename T> inline float operator--()          { INV; return --_val; }
+        template <typename T> inline float operator--(int dummy) { INV; return _val--; }
+        template <typename T> inline bool operator==(T other) const { return _val == other; }
+        template <typename T> inline bool operator!=(T other) const { return _val != other; }
+        template <typename T> inline bool operator>(T other) const  { return _val >  other; }
+        template <typename T> inline bool operator<(T other) const  { return _val <  other; }
+        template <typename T> inline bool operator>=(T other) const { return _val >= other; }
+        template <typename T> inline bool operator<=(T other) const { return _val <= other; }
+        template <typename T> inline float operator+=(T v) { INV; return _val += v; }
+        template <typename T> inline float operator-=(T v) { INV; return _val -= v; }
+        template <typename T> inline float operator*=(T v) { INV; return _val *= v; }
+        template <typename T> inline float operator/=(T v) { INV; return _val /= v; }
         inline operator float()        { return _val; }
-#undef DECL
 #undef INV
 
     private:

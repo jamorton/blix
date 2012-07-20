@@ -202,6 +202,19 @@ void Graphics::drawEllipse(float x, float y, float width, float height)
 void Graphics::drawRoundRect(float x, float y, float width, float height,
     float ellipseWidth, float ellipseHeight)
 {
+    ellipseWidth /= 2;
+    ellipseHeight /= 2;
+    _addBounds(x, y, x + width, y + height);
+    _lastX = x + width - ellipseWidth;
+    _lastY = y;
+    SkRect r;
+    r.set(x, y, x + width, y + height);
+    if (_hasFill) {
+        _closeFill();
+        _cmds[_fillIdx].path.addRoundRect(r, ellipseWidth, ellipseHeight);
+    }
+    if (_hasStroke)
+        _cmds[_strokeIdx].path.addRoundRect(r, ellipseWidth, ellipseHeight);
 }
 
 void Graphics::clear()
