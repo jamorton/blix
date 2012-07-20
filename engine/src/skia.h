@@ -10,6 +10,8 @@
 #include "SkRect.h"
 #include "SkCanvas.h"
 #include "SkPath.h"
+#include "SkMatrix.h"
+#include "SkPoint.h"
 
 #define alphaU8Mul(a, b) ((uint8_t)(((uint32_t)(a) * (uint32_t)(b)) / 255))
 

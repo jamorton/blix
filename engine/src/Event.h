@@ -21,12 +21,11 @@ public:
 
     void * target() { return _target; }
 
-    inline void target(void * t) { _target = t; }
-
 private:
     EventType _type;
     void * _target;
     friend class EventDispatcher;
+    friend class DisplayObject;
 
 public:
 

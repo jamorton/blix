@@ -29,6 +29,7 @@ public:
             parent->addChild(&s[i]);
             parent = &s[i];
         }
+        
         s[0].x = 10;
         s[0].y = 10;
         

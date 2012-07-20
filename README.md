@@ -4,10 +4,7 @@
 blix is a cross-platform 2d game engine for iOS and Android, built in C++.
 
 Its API is built around a port of Flash's AS3 API, including an
-implementation of its display list and event system. Note, however, that
-the flash API is only ported where it makes sense; C++/mobile is an entirely
-different platform from flash/web, common sense and simplicity are
-preferred to an exact port.
+implementation of its display list and event system.
 
 ## What does it look like?
 

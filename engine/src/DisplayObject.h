@@ -6,12 +6,14 @@
 #include "EventDispatcher.h"
 #include "skia.h"
 
+class Canvas;
 class DisplayObjectContainer;
 
 class DisplayObject : public EventDispatcher
 {
 
 private:
+
     // special properties implementation lets us detect changes in DisplayObject
     // values, without using getter and setter functions.
     // So we can have:
@@ -58,7 +60,7 @@ private:
 
 public:
 
-    DisplayObject():
+    DisplayObject() :
         x(0, this),
         y(0, this),
         rotation(0, this),

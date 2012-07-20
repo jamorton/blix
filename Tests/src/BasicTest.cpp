@@ -21,8 +21,6 @@ public:
         text.text("Foo");
         text.x = text.y = 100;
     }
-    
-    
 };
 
 DEFINE_TEST(BasicTest);
