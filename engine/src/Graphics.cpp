@@ -50,6 +50,9 @@ static inline SkRect _bezierBounds(float x1, float y1,
 
 void Graphics::_closeFill()
 {
+    if (!_hasFill)
+        return;
+
     Cmd cmd;
     // preserve last fill's paint
     cmd.paint = _cmds[_fillIdx].paint;
@@ -77,7 +80,8 @@ void Graphics::lineStyle(float thickness, Color color, float alpha,
         _hasStroke = false;
     else {
         Cmd cmd;
-        cmd.paint.setAntiAlias(true);
+        if (thickness != 0)
+            cmd.paint.setAntiAlias(true);
         cmd.paint.setStyle(SkPaint::kStroke_Style);
         cmd.paint.setStrokeWidth(thickness);
         cmd.paint.setARGB(
@@ -106,6 +110,7 @@ void Graphics::beginFill(Color color, float alpha)
     cmd.paint.setColor(color);
     cmd.paint.setAlpha(floatToU8(alpha));
     cmd.paint.setStyle(SkPaint::kFill_Style);
+    cmd.paint.setAntiAlias(true);
 
     cmd.path.moveTo(_lastX, _lastY);
 
