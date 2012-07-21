@@ -68,6 +68,7 @@ static Engine * _engine;
     GLKView *view = (GLKView *)self.view;
     view.context = self.context;
     view.drawableStencilFormat = GLKViewDrawableStencilFormat8;
+    view.contentScaleFactor = [[UIScreen mainScreen] scale];
 
     [EAGLContext setCurrentContext:self.context];
     _engine = new Engine;
@@ -228,12 +229,12 @@ void Platform::readFile(const std::string& path, std::string * out)
 
 int Platform::width()
 {
-    return _controller.view.bounds.size.width;
+    return _controller.view.bounds.size.width * [[UIScreen mainScreen] scale];
 }
 
 int Platform::height()
 {
-    return _controller.view.bounds.size.height;
+    return _controller.view.bounds.size.height * [[UIScreen mainScreen] scale];
 }
 
 //---------------------------------------------------------------

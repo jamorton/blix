@@ -8,8 +8,7 @@ class IPlatformEventHandler;
 
 /*
   common definitions for platform specific code.
-  implemented in android/platform.cpp
-  or ios/platform.m
+  implemented in PlatformiOS/PlatformAndroid
 */
 namespace Platform
 {

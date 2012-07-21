@@ -55,10 +55,12 @@ void DisplayObject::_recalcBounds()
     _transform.reset();
     _transform.preTranslate(x - regX, y - regY);
     _transform.preScale(scaleX, scaleY, regX, regY);
+
     // if we call rotation functions on matrices they disable certain fast paths
     // the common case is that rotation is 0
     if (rotation != 0)
         _transform.preRotate(rotation, regX, regY);
+
     _boundsInvalid = false;
 }
 
