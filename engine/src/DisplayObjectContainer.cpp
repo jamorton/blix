@@ -70,6 +70,8 @@ void DisplayObjectContainer::_handleTouch(TouchEvent * event, SkMatrix * m)
     SkMatrix trans;
     SkPoint pt;
 
+    event->_target = this;
+
     // find the first child (from front of display list back)
     // that has bounds the touch point are contained in.
     for (int i = _children.size() - 1; i >= 0; i--) {
@@ -91,5 +93,6 @@ void DisplayObjectContainer::_handleTouch(TouchEvent * event, SkMatrix * m)
             break;
         }
     }
+    event->_currentTarget = this;
     dispatchEvent(event);
 }

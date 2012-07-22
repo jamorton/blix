@@ -9,7 +9,7 @@ typedef int EventType;
 class Event
 {
 public:
-    Event(EventType t) : _type(t), _target(NULL) { }
+    Event(EventType t) : _type(t), _target(NULL), _currentTarget(NULL) { }
 
     inline EventType type() { return _type; }
 
@@ -19,13 +19,19 @@ public:
     template <typename T>
     inline T * target() { return reinterpret_cast<T *>(_target); }
 
+    template <typename T>
+    inline T * currentTarget() { return reinterpret_cast<T *>(_currentTarget); }
+
     void * target() { return _target; }
+    void * currentTarget() { return _currentTarget; }
 
 private:
     EventType _type;
     void * _target;
+    void * _currentTarget;
     friend class EventDispatcher;
     friend class DisplayObject;
+    friend class DisplayObjectContainer;
 
 public:
 

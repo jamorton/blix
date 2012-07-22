@@ -74,5 +74,6 @@ void DisplayObject::_inverseTransform(SkMatrix& m)
 void DisplayObject::_handleTouch(TouchEvent * event, SkMatrix * m)
 {
     event->_target = this;
+    event->_currentTarget = this;
     dispatchEvent(event);
 }
