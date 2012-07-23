@@ -29,7 +29,7 @@ public:
      *
      * @param size Text point size.
      */
-    TextField(const std::string& face, uint size);
+    TextField(const std::string& face, uint size = 12);
     ~TextField();
 
     inline const std::string& text() const { return _str; }
@@ -37,11 +37,18 @@ public:
 
     void color(uint color);
 
+    void size(uint size);
+    inline uint size() { return _paint.getTextSize(); }
+
+    void setAntialias(bool aa);
+
 protected:
 
     void _draw(Canvas * canvas);
 
 private:
+
+    void _remeasure();
 
     _Typeface * _typeface;
     std::string _str;

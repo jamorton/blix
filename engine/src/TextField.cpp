@@ -54,20 +54,42 @@ TextField::~TextField()
     _typeface->release();
 }
 
+void TextField::setAntialias(bool aa)
+{
+    if (aa) {
+        _paint.setAntiAlias(true);
+        _paint.setLCDRenderText(true);
+    } else {
+        _paint.setAntiAlias(false);
+        _paint.setLCDRenderText(false);
+    }
+}
+
 void TextField::text(const std::string& s)
 {
     _str = s;
+    _remeasure();
+}
+
+void TextField::color(Color color)
+{
+    _paint.setColor(color);
+}
+
+void TextField::size(uint size)
+{
+    _paint.setTextSize(size);
+    _remeasure();
+}
+
+void TextField::_remeasure()
+{
     // Skia sets (0, 0) as somewhere on the text baseline. We want
     // it to be the top left of the text
     _paint.measureText(_str.c_str(), _str.size(), &_bounds);
     _offsetX = -_bounds.left();
     _offsetY = -_bounds.top();
     _bounds.offset(_offsetX, _offsetY);
-}
-
-void TextField::color(Color color)
-{
-    _paint.setColor(color);
 }
 
 void TextField::_draw(Canvas * canvas)
