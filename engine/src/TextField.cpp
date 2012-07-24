@@ -101,7 +101,18 @@ void TextField::_remeasure()
 
     SkRect measure;
     _paint.measureText(_str.data(), _str.size(), &measure);
-    _bounds.set(0, 0, measure.width() + metrics.fXMax, height);
+    _bounds.set(measure.left(), 0, measure.right(), height);
+
+    if (align() == ALIGN_CENTER)
+        _bounds.offset(_bounds.width() / -2, 0);
+    else if (align() == ALIGN_RIGHT)
+        _bounds.offset(-_bounds.width(), 0);
+}
+
+void TextField::align(Align align)
+{
+    _paint.setTextAlign((SkPaint::Align)align);
+    _remeasure();
 }
 
 void TextField::_draw(Canvas * canvas)

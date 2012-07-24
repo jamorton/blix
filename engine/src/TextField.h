@@ -23,6 +23,12 @@ class TextField : public DisplayObject
 {
 public:
 
+    enum Align {
+        ALIGN_LEFT   = SkPaint::kLeft_Align,
+        ALIGN_CENTER = SkPaint::kCenter_Align,
+        ALIGN_RIGHT  = SkPaint::kRight_Align
+    };
+
     /**
      * @param face the name of a truetype text file in assets to use.
      *        Files are cached and not reloaded in each new TextField instance.
@@ -41,6 +47,9 @@ public:
     inline uint size() { return _paint.getTextSize(); }
 
     void setAntialias(bool aa);
+
+    void align(Align align);
+    inline Align align() { return (Align)_paint.getTextAlign(); }
 
 protected:
 
