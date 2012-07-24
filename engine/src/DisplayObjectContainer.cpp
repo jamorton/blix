@@ -19,10 +19,8 @@ void DisplayObjectContainer::update(Canvas * canvas)
 
     _draw(canvas);
 
-    for (_loopIdx = 0; _loopIdx < _children.size(); _loopIdx++) {
-        _children[_loopIdx]->_containerIndex = _loopIdx;
+    for (_loopIdx = 0; _loopIdx < _children.size(); _loopIdx++)
         _children[_loopIdx]->update(canvas);
-    }
 
     if (Engine::DRAW_BOUNDS)
         _drawBounds(canvas);
@@ -49,6 +47,8 @@ void DisplayObjectContainer::removeChild(DisplayObject * child)
     _children.erase(_children.begin() + child->_containerIndex);
     if (child->_containerIndex <= _loopIdx)
         _loopIdx--;
+    for (uint i = child->_containerIndex; i < _children.size(); i++)
+        _children[i]->_containerIndex--;
     child->_parent = NULL;
     child->unref();
     _invalidateBounds();
