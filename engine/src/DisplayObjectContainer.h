@@ -37,6 +37,7 @@ protected:
 private:
 
     std::vector<DisplayObject *> _children;
+    uint _loopIdx;
 
     friend class Engine;
     virtual void _handleTouch(TouchEvent * event, SkMatrix * m);

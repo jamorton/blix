@@ -12,51 +12,16 @@
 #include "gl/GrGLUtil.h"
 #include "gl/GrGLDefines.h"
 
+#include "Platform.h"
 #include "Stage.h"
 #include "Event.h"
+#include "Object.h"
 
 extern Stage * createStage();
 
 bool Engine::DRAW_BOUNDS = false;
-
-/*
-
-Precise flash-like click handling would require some kind
-of color picking. It is pretty easy with skia, but probably not
-necessary given how imprecise touches are on mobile. We probably
-just want simple bounds-based click targeting
-
-#include "SkDrawFilter.h"
-#include "SkColorFilter.h"
-#include "SkUtils.h"
-
-class MyFilter : public SkColorFilter
-{
-public:
-    virtual uint32_t getFlags() SK_OVERRIDE {
-        return 0;
-    }
-
-    virtual void filterSpan(const SkPMColor shader[], int count,
-        SkPMColor result[]) SK_OVERRIDE {
-        //sk_memset32(result, SkPreMultiplyColor(0xFF00FF00), count);
-        for (uint i = 0; i < count; i++) {
-
-        }
-    }
-protected:
-    SK_DECLARE_UNFLATTENABLE_OBJECT()
-};
-class MyDrawFilter : public SkDrawFilter
-{
-public:
-    void filter(SkPaint * paint, Type type)
-    {
-        paint->setColorFilter(&filt);
-    }
-    MyFilter filt;
-};
-*/
+bool Engine::_updating = false;
+std::vector<const Object *> Engine::_collect;
 
 Engine::Engine()
 {
@@ -84,15 +49,15 @@ void Engine::onLoaded()
     _canvas = new Canvas(dev);
     dev->unref();
 
-    _stage = createStage();
+    _stage = ref(createStage());
 }
 
 void Engine::onUnload()
 {
-    delete _stage;
-    SkSafeUnref(_context);
-    SkSafeUnref(_interface);
-    SkSafeUnref(_renderTarget);
+    _stage->unref();
+    _context->unref();
+    _interface->unref();
+    _renderTarget->unref();
 }
 
 void Engine::onUpdate()
@@ -106,8 +71,14 @@ void Engine::onUpdate()
     glClearStencil(0);
     glClear(GL_COLOR_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 
+    _updating = true;
     _stage->update(_canvas);
     _canvas->flush();
+    _updating = false;
+
+    for (int i = 0; i < _collect.size(); i++)
+        delete _collect[i];
+    _collect.clear();
 }
 
 void Engine::onTouchEvent(TouchType type, float x, float y, uint id)
@@ -120,7 +91,21 @@ void Engine::onTouchEvent(TouchType type, float x, float y, uint id)
     TouchEvent e(evt, 0, 0, x, y, id);
     SkMatrix m;
     m.reset();
+    _updating = true;
     _stage->_handleTouch(&e, &m);
+    _updating = false;
 }
 
 void Engine::onAccelEvent(float x, float y, float z) { }
+
+void Engine::destroy(const Object * o)
+{
+    // Problems arise if objects in the display tree are deleted
+    // while a frame update is in process, and this is usually where
+    // it happens since user code is called from there. We have to
+    // defer the delete until after the update is done.
+    if (_updating)
+        _collect.push_back(o);
+    else
+        delete o;
+}

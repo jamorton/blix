@@ -19,8 +19,10 @@ void DisplayObjectContainer::update(Canvas * canvas)
 
     _draw(canvas);
 
-    for (int i = 0; i < _children.size(); i++)
-        _children[i]->update(canvas);
+    for (_loopIdx = 0; _loopIdx < _children.size(); _loopIdx++) {
+        _children[_loopIdx]->_containerIndex = _loopIdx;
+        _children[_loopIdx]->update(canvas);
+    }
 
     if (Engine::DRAW_BOUNDS)
         _drawBounds(canvas);
@@ -31,11 +33,12 @@ void DisplayObjectContainer::update(Canvas * canvas)
 
 void DisplayObjectContainer::addChild(DisplayObject * child)
 {
+    child->ref();
     if (child->_parent != NULL)
         child->_parent->removeChild(child);
+    child->_containerIndex = _children.size();
     _children.push_back(child);
     child->_parent = this;
-    child->_containerIndex = _children.size() - 1;
     _invalidateBounds();
 }
 
@@ -44,7 +47,10 @@ void DisplayObjectContainer::removeChild(DisplayObject * child)
     if (!contains(child))
         return;
     _children.erase(_children.begin() + child->_containerIndex);
+    if (child->_containerIndex <= _loopIdx)
+        _loopIdx--;
     child->_parent = NULL;
+    child->unref();
     _invalidateBounds();
 }
 
@@ -74,8 +80,8 @@ void DisplayObjectContainer::_handleTouch(TouchEvent * event, SkMatrix * m)
 
     // find the first child (from front of display list back)
     // that has bounds the touch point are contained in.
-    for (int i = _children.size() - 1; i >= 0; i--) {
-        DisplayObject * child = _children[i];
+    for (_loopIdx = 0; _loopIdx < _children.size(); _loopIdx++) {
+        DisplayObject * child = _children[_loopIdx];
 
         child->_inverseTransform(trans);
         trans.setConcat(trans, *m);

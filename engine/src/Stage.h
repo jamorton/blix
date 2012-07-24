@@ -10,6 +10,7 @@ class Stage : public DisplayObjectContainer
 public:
 
     Stage() : _bgColor(0xFFFFFF) { }
+    virtual ~Stage() { }
 
     void bgColor(uint c) { _bgColor = c; }
     Color bgColor() { return _bgColor; }

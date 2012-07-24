@@ -5,11 +5,12 @@
 #include "common.h"
 #include "EventDispatcher.h"
 #include "skia.h"
+#include "Object.h"
 
 class Canvas;
 class DisplayObjectContainer;
 
-class DisplayObject : public EventDispatcher
+class DisplayObject : public EventDispatcher, public Object
 {
 
 private:

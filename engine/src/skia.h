@@ -4,6 +4,8 @@
 
 #include <vector>
 
+#include "common.h"
+
 #include "SkTypeface.h"
 #include "SkStream.h"
 #include "SkPaint.h"
