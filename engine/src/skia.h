@@ -17,10 +17,12 @@
 
 class SkDevice;
 
+/**
+ * Canvas is a wrapper around SkCanvas which allows for custom drawing state
+ * to persist across the entire update process.
+ */
 class Canvas : public SkCanvas
 {
-
-
 public:
 
     Canvas(SkDevice * dev) : SkCanvas(dev), _alphaIdx(0)
@@ -28,6 +30,9 @@ public:
         _alphas[0] = 255;
     }
 
+    // Alpha values, like the transform matrices, are concatenated together
+    // as the display tree is traversed. A DisplayObject's children is affected
+    // by the parents alpha, etc.
     inline void concatAlpha(float alpha)
     {
         _alphas[_alphaIdx + 1] = alphaU8Mul(floatToU8(alpha), _alphas[_alphaIdx]);

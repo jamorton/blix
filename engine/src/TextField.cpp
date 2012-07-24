@@ -5,6 +5,7 @@
 #include "Resource.h"
 #include "skia.h"
 
+// Simple wrapper that exposes SkTypeface as a Resource
 class _Typeface : public Resource
 {
 public:
@@ -84,12 +85,23 @@ void TextField::size(uint size)
 
 void TextField::_remeasure()
 {
-    // Skia sets (0, 0) as somewhere on the text baseline. We want
-    // it to be the top left of the text
-    _paint.measureText(_str.c_str(), _str.size(), &_bounds);
-    _offsetX = -_bounds.left();
-    _offsetY = -_bounds.top();
-    _bounds.offset(_offsetX, _offsetY);
+    // A DisplayObject's origin should be at the top left,
+    // but text is drawn relative to the baseline, so we calculate
+    // an offset.
+
+    // We could just use _paint.measureText to find the text's height
+    // from the baseline, but then the text's position could shift down
+    // if a higher character was added, so we measure from the highest char
+
+    SkPaint::FontMetrics metrics;
+    // returns fDescent - fAscent + fLeading
+    float height = _paint.getFontMetrics(&metrics);
+    _offsetX = 0;
+    _offsetY = -metrics.fAscent;
+
+    SkRect measure;
+    _paint.measureText(_str.data(), _str.size(), &measure);
+    _bounds.set(0, 0, measure.width() + metrics.fXMax, height);
 }
 
 void TextField::_draw(Canvas * canvas)
