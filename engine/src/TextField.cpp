@@ -44,6 +44,7 @@ TextField::TextField(const std::string& face, uint size)
     _typeface->set(_paint);
     _paint.setAntiAlias(true);
     _paint.setLCDRenderText(true);
+    _paint.setSubpixelText(true);
     _paint.setTextSize(size);
     _paint.setTextAlign(SkPaint::kLeft_Align);
     _paint.setARGB(255, 0, 0, 0);
