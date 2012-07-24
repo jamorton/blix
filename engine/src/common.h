@@ -8,6 +8,7 @@
 #include <string>
 #include <unordered_map>
 #include <functional>
+#include <cassert>
 
 // Android Device
 #if defined(__ANDROID__)
@@ -72,5 +73,11 @@ typedef uint Color;
 
 #define memberFunc(f) std::bind(&f, this)
 #define methodListener(f) std::bind(&f, this, std::placeholders::_1)
+
+#ifdef DEBUG
+#define DBG_ASSERT(cond) assert(cond)
+#else
+#define DBG_ASSERT(COND)
+#endif
 
 #endif // ENGINE_COMMON_H
