@@ -4,6 +4,12 @@
 #include "Engine.h"
 #include "skia.h"
 
+DisplayObject::~DisplayObject()
+{
+    if (_parent != NULL)
+        _parent->removeChild(this);
+}
+
 void DisplayObject::update(Canvas * canvas)
 {
     _recalcBounds();

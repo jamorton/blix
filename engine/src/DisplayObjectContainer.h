@@ -11,11 +11,25 @@ class DisplayObjectContainer : public DisplayObject
 
 public:
 
-    virtual ~DisplayObjectContainer() { }
+    virtual ~DisplayObjectContainer();
 
     void update(Canvas * canvas);
 
-    void addChild(DisplayObject * child);
+    template <typename T>
+    inline T * addChild(T * child)
+    {
+        child->ref();
+        _addChild(child);
+        return child;
+    }
+
+    template <typename T>
+    inline T * giveChild(T * child)
+    {
+        _addChild(child);
+        return child;
+    }
+
     void removeChild(DisplayObject * child);
 
     inline size_t numChildren()  const { return _children.size(); }
@@ -35,6 +49,8 @@ protected:
     virtual void _recalcBounds();
 
 private:
+
+    void _addChild(DisplayObject * child);
 
     std::vector<DisplayObject *> _children;
     uint _loopIdx;

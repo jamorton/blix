@@ -3,6 +3,14 @@
 #include "Engine.h"
 #include "skia.h"
 
+DisplayObjectContainer::~DisplayObjectContainer()
+{
+    for (uint i = 0; i < _children.size(); i++) {
+        _children[i]->unref();
+    }
+}
+
+
 void DisplayObjectContainer::update(Canvas * canvas)
 {
     _recalcBounds();
@@ -29,9 +37,8 @@ void DisplayObjectContainer::update(Canvas * canvas)
     canvas->restore();
 }
 
-void DisplayObjectContainer::addChild(DisplayObject * child)
+void DisplayObjectContainer::_addChild(DisplayObject * child)
 {
-    child->ref();
     if (child->_parent != NULL)
         child->_parent->removeChild(child);
     child->_containerIndex = _children.size();

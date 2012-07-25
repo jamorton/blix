@@ -15,18 +15,23 @@ class Object
 public:
     Object() : _refcount(1) { }
 
-    virtual ~Object() {
-        DBG_ASSERT(_refcount == 0);
+    virtual ~Object()
+    {
+        // Stack allocated objects will have a refcount of 1
+        // upon destruction.
+        DBG_ASSERT(_refcount == 0 || _refcount == 1);
     }
 
-    inline void ref() const { _refcount += 1; }
+    inline void ref() const { _refcount++; }
 
     inline void unref() const {
-        DBG_ASSERT(_refcount > 1);
+        DBG_ASSERT(_refcount > 0);
 
-        if (--_refcount == 1)
+        if (--_refcount == 0)
             Engine::destroy(this);
     }
+
+    inline unsigned int refcount() { return _refcount; }
 
 private:
     mutable unsigned int _refcount;
@@ -36,6 +41,13 @@ template <typename T>
 inline T * ref(T * obj)
 {
     obj->ref();
+    return obj;
+}
+
+template <typename T>
+inline T * unref(T * obj)
+{
+    obj->unref();
     return obj;
 }
 
