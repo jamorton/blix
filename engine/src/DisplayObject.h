@@ -10,7 +10,7 @@
 class Canvas;
 class DisplayObjectContainer;
 
-class DisplayObject : public EventDispatcher, public Object
+class DisplayObject : public EventDispatcher
 {
 
 private:
@@ -69,12 +69,13 @@ public:
         regY(0, this),
         alpha(1),
         visible(true),
-        _parent(NULL), _boundsInvalid(true)
+        _parent(NULL),
+        _boundsInvalid(true)
     {
         _bounds.set(0, 0, 0, 0);
     }
 
-    virtual ~DisplayObject() { }
+    virtual ~DisplayObject();
 
     virtual void update(Canvas * canvas);
 
